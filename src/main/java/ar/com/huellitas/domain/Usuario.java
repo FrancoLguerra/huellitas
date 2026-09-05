@@ -2,6 +2,7 @@ package ar.com.huellitas.domain;
 
 import java.util.List;
 
+import ar.com.huellitas.helpers.ValidationUtils;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -42,6 +43,42 @@ public class Usuario {
 		this.mail = mail;
 		this.telefono = telefono;
 		
+	}
+	public void setNombre(String nombre) {
+		if(!ValidationUtils.nombreValido(nombre)) {
+			throw new IllegalArgumentException("Debe ingresar un nombre válido");
+		}
+		this.nombre = nombre;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	public void setPublicaciones(List<Publicacion> publicaciones) {
+		this.publicaciones = publicaciones;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public String getMail() {
+		return mail;
+	}
+	public String getTelefono() {
+		return telefono;
+	}
+	public List<Publicacion> getPublicaciones() {
+		return publicaciones;
+	}
+	public Long getId() {
+		return id;
 	}
 
 

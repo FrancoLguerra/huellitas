@@ -39,7 +39,8 @@ public class Publicacion {
 	@ManyToOne(cascade = CascadeType.ALL, optional = false)
 	@JoinColumn(name= "USUARIO_ID")
 	private Usuario publicadoPor;
-
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "MASCOTA_ID", nullable = false)
 	private Mascota mascota;
 	
 	Publicacion() {};
