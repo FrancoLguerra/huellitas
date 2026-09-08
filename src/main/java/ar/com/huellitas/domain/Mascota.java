@@ -1,10 +1,13 @@
 package ar.com.huellitas.domain;
 
-import java.util.Random;
 
+import ar.com.huellitas.enums.EspecieMascota;
+import ar.com.huellitas.enums.GeneroMascota;
 import ar.com.huellitas.helpers.ValidationUtils;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,9 +24,11 @@ public class Mascota {
 	@Column(name = "NOMBRE")
 	private String nombre;
 	@Column(name = "ESPECIE")
-	private String especie;
+	@Enumerated(EnumType.STRING)
+	private EspecieMascota especie;
 	@Column(name = "GENERO")
-	private String genero;
+	@Enumerated(EnumType.STRING)
+	private GeneroMascota genero;
 	@Column(name = "COLOR")
 	private String color;
 	@Column(name = "RAZA")
@@ -32,10 +37,9 @@ public class Mascota {
 	private boolean castrado;
 	
 	Mascota(){};
-	public Mascota(String especie, String color) {
-		id = new Random().nextLong();
-		this.especie = especie;
-		this.color = color;
+	public Mascota(EspecieMascota especie, String color) {
+		setEspecie(especie);
+		setColor(color);
 		
 	}
 	public String getNombre() {
@@ -47,22 +51,23 @@ public class Mascota {
 		}
 		this.nombre = nombre;
 	}
-	public String getEspecie() {
-		return especie;
-	}
-	public void setEspecie(String especie) {
+
+	public void setEspecie(EspecieMascota especie) {
 		this.especie = especie;
 	}
-	public String getGenero() {
+	public GeneroMascota getGenero() {
 		return genero;
 	}
-	public void setGenero(String genero) {
+	public void setGenero(GeneroMascota genero) {
 		this.genero = genero;
 	}
 	public String getColor() {
 		return color;
 	}
 	public void setColor(String color) {
+		if(ValidationUtils.stringValido(color)) {
+			throw new IllegalArgumentException("Debe ingresar un color válido");
+		}
 		this.color = color;
 	}
 	public String getRaza() {

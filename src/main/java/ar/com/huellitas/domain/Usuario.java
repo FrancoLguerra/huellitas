@@ -25,7 +25,7 @@ public class Usuario {
 	private String nombre;
 	@Column(name = "APELLIDO")
 	private String apellido;
-	@Column(name = "MAIL")
+	@Column(name = "MAIL", unique = true)
 	private String mail;
 	@Column(name = "TELEFONO")
 	private String telefono;
@@ -38,10 +38,10 @@ public class Usuario {
 	}
 	Usuario(){}
 	public Usuario( String nombre, String apellido, String mail, String telefono ) {
-		this.nombre = nombre ;
-		this.apellido = apellido;
-		this.mail = mail;
-		this.telefono = telefono;
+		setNombre(nombre);
+		setApellido(apellido);
+		setMail(mail);
+		setTelefono(telefono);
 		
 	}
 	public void setNombre(String nombre) {
@@ -50,33 +50,55 @@ public class Usuario {
 		}
 		this.nombre = nombre;
 	}
+	
 	public void setApellido(String apellido) {
+		if(!ValidationUtils.apellidoValido(apellido)) {
+			throw new IllegalArgumentException("Debe ingresar un apellido válido");
+		}
 		this.apellido = apellido;
 	}
+	
 	public void setMail(String mail) {
+		if(!ValidationUtils.mailValido(mail)) {
+			throw new IllegalArgumentException("Debe ingresar un mail válido");
+		}
 		this.mail = mail;
 	}
+	
 	public void setTelefono(String telefono) {
+		if(!ValidationUtils.telefonoValido(telefono)) {
+			throw new IllegalArgumentException("Debe ingresar un telefono válido");
+		}
 		this.telefono = telefono;
 	}
-	public void setPublicaciones(List<Publicacion> publicaciones) {
-		this.publicaciones = publicaciones;
+	
+	public void agregarPublicacion(Publicacion publicacion) {
+		 if (publicacion == null) {
+		        throw new IllegalArgumentException("La publicación no puede ser nula");
+		    }
+		 publicaciones.add(publicacion);
 	}
+	
 	public String getApellido() {
 		return apellido;
 	}
+	
 	public String getNombre() {
 		return nombre;
 	}
+	
 	public String getMail() {
 		return mail;
 	}
+	
 	public String getTelefono() {
 		return telefono;
 	}
+	
 	public List<Publicacion> getPublicaciones() {
 		return publicaciones;
 	}
+	
 	public Long getId() {
 		return id;
 	}

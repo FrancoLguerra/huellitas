@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Random;
 
 import ar.com.huellitas.enums.EstadoPublicacion;
+import ar.com.huellitas.helpers.ValidationUtils;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,7 +37,7 @@ public class Publicacion {
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "IMAGEN_ID", nullable = true)
 	private Imagen imagen;
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@ManyToOne(optional = false)
 	@JoinColumn(name= "USUARIO_ID")
 	private Usuario publicadoPor;
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -45,18 +46,84 @@ public class Publicacion {
 	
 	Publicacion() {};
 	
-	public Publicacion(Usuario publicadoPor,Mascota mascota, LocalDateTime fecha, String especie) {
-		id = new Random().nextLong();
-		this.mascota = mascota;
-		this.publicadoPor = publicadoPor;
-		this.fecha = fecha;
-		this.estado = EstadoPublicacion.ACTIVA;
+	public Publicacion(Usuario publicadoPor,Mascota mascota) {
+		setMascota(mascota);
+		setPublicadoPor(publicadoPor);
+		setFecha(LocalDateTime.now());
+		setEstado(EstadoPublicacion.ACTIVA);
+		
 		
 		
 	}
 	
+	public void setFecha(LocalDateTime fecha) {
+		if(fecha == null) {
+			throw new IllegalArgumentException("La fecha es invalida");
+		}
+		this.fecha = fecha;
+	}
+
+	public void setTextoAdicional(String textoAdicional) {
+		if(ValidationUtils.stringMayorA(textoAdicional, 255) ) {
+			throw new IllegalArgumentException("El texto excede el tamaño permitido");
+			
+		}
+		this.textoAdicional = textoAdicional;
+	}
+
+	public void setUbicacion(String ubicacion) {
+		if(!ValidationUtils.stringValido(ubicacion)) {
+			throw new IllegalArgumentException("La ubicación tiene un formato incorrecto");
+		}
+		this.ubicacion = ubicacion;
+	}
+
+	public void setEstado(EstadoPublicacion estado) {
+		this.estado = estado;
+	}
+
+	public void setImagen(Imagen imagen) {
+		this.imagen = imagen;
+	}
+
+	public void setPublicadoPor(Usuario publicadoPor) {
+		this.publicadoPor = publicadoPor;
+	}
+
+	public void setMascota(Mascota mascota) {
+		this.mascota = mascota;
+	}
+
 	public Long getId() {
 		return this.id;
+	}
+
+	public LocalDateTime getFecha() {
+		return fecha;
+	}
+
+	public String getTextoAdicional() {
+		return textoAdicional;
+	}
+
+	public String getUbicacion() {
+		return ubicacion;
+	}
+
+	public EstadoPublicacion getEstado() {
+		return estado;
+	}
+
+	public Imagen getImagen() {
+		return imagen;
+	}
+
+	public Usuario getPublicadoPor() {
+		return publicadoPor;
+	}
+
+	public Mascota getMascota() {
+		return mascota;
 	}
 	
 

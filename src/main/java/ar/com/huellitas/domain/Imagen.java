@@ -26,9 +26,9 @@ public class Imagen {
 	
 	Imagen(){};
 	public Imagen(String nombre, String tipo, byte[] contenido) {
-		this.nombre = nombre;
-		this.tipoContenido = tipo;
-		this.contenido = contenido;
+		setNombre(nombre);
+		setTipoContenido(tipo);
+		setContenido(contenido);
 	}
 	public String getNombre() {
 		return nombre;
@@ -43,12 +43,18 @@ public class Imagen {
 		return tipoContenido;
 	}
 	public void setTipoContenido(String tipoContenido) {
+		if(!ValidationUtils.tipoImagenValido(tipoContenido)) {
+			throw new IllegalArgumentException("Debe ingresar un tipo de imagen válido");
+		}
 		this.tipoContenido = tipoContenido;
 	}
 	public byte[] getContenido() {
 		return contenido;
 	}
 	public void setContenido(byte[] contenido) {
+		if(!ValidationUtils.contenidoImagenValido(contenido)) {
+			throw new IllegalArgumentException("Debe ingresar un contenido de imagen válido");
+		}
 		this.contenido = contenido;
 	}
 	public Long getId() {
