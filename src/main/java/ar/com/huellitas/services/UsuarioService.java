@@ -1,4 +1,4 @@
-package services;
+package ar.com.huellitas.services;
 
 import ar.com.huellitas.domain.Usuario;
 

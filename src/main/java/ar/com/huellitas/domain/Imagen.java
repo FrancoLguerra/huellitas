@@ -2,6 +2,7 @@ package ar.com.huellitas.domain;
 
 import java.util.ArrayList;
 
+import ar.com.huellitas.enums.TipoDeImagen;
 import ar.com.huellitas.helpers.ValidationUtils;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,12 +21,12 @@ public class Imagen {
 	@Column(name = "NOMBRE")
 	private String nombre;
 	@Column(name = "TIPO_CONTENIDO")
-	private String tipoContenido;
+	private TipoDeImagen tipoContenido;
 	@Column(name = "CONTENIDO")
 	private byte[] contenido;
 	
 	Imagen(){};
-	public Imagen(String nombre, String tipo, byte[] contenido) {
+	public Imagen(String nombre, TipoDeImagen tipo, byte[] contenido) {
 		setNombre(nombre);
 		setTipoContenido(tipo);
 		setContenido(contenido);
@@ -39,14 +40,14 @@ public class Imagen {
 		}
 		this.nombre = nombre;
 	}
-	public String getTipoContenido() {
+	public TipoDeImagen getTipoContenido() {
 		return tipoContenido;
 	}
-	public void setTipoContenido(String tipoContenido) {
-		if(!ValidationUtils.tipoImagenValido(tipoContenido)) {
+	public void setTipoContenido(TipoDeImagen tipo) {
+		if(!ValidationUtils.tipoImagenValido(tipo)) {
 			throw new IllegalArgumentException("Debe ingresar un tipo de imagen válido");
 		}
-		this.tipoContenido = tipoContenido;
+		this.tipoContenido = tipo;
 	}
 	public byte[] getContenido() {
 		return contenido;

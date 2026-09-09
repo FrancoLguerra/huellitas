@@ -1,5 +1,7 @@
 package ar.com.huellitas.helpers;
 
+import ar.com.huellitas.enums.TipoDeImagen;
+
 public class ValidationUtils {
 	
 	public static boolean stringValido(String palabra) {
@@ -9,56 +11,66 @@ public class ValidationUtils {
 	}
 	
 	public static boolean stringMayorA(String palabra, int tamanio) {
-		return palabra.length() > tamanio;
+		return 
+				palabra != null
+				&&palabra.length() > tamanio;
 	}
 	
 	public static boolean stringMenorA(String palabra, int tamanio) {
-		return palabra.length() < tamanio;
+		return 
+				palabra != null
+				&&palabra.length() < tamanio;
 	}
 	
 	public static boolean nombreValido(String nombre) {
 	
 			return
 				stringValido(nombre)
-				&& stringMayorA(nombre, 2)
-				&& stringMenorA(nombre, 100);
+				&& cadenaConLongitudValida(nombre, 2, 100);
 	}
 	
 	public static boolean apellidoValido(String apellido) {
 		return 
 				stringValido(apellido)
-				&& stringMenorA(apellido, 2)
-				&& stringMenorA(apellido, 100);
+				&& cadenaConLongitudValida(apellido, 2, 100);
 	}
+	
+	public static boolean cadenaConLongitudValida(String cadena, int minimo, int mayor) {
+		return 
+				cadena != null
+				&& stringMayorA(cadena, minimo)
+				&& stringMenorA(cadena, mayor);
+		
+	}
+	
 	public static boolean mailValido(String mail) {
 		return
 				stringValido(mail)
 				&& mail.contains("@")
-				&& mail.contains(".com");
+				&& mail.contains(".com")
+				&& !mail.startsWith("@")
+		        && !mail.endsWith("@")
+		        && !mail.startsWith(".")
+		        && !mail.endsWith(".");
 	}
 	
 	public static boolean telefonoValido(String telefono) {
 		return
 				stringValido(telefono)
-				&& stringMayorA(telefono, 5)
-				&& stringMayorA(telefono, 20);
+				&& cadenaConLongitudValida(telefono, 2, 30);
 				
 	}
 	
-	public static boolean tipoImagenValido(String tipo) {
+	public static boolean tipoImagenValido(TipoDeImagen tipo) {
 		return
-				stringValido(tipo)
-				&& tipo.equals("jpeg")
-				&& tipo.equals("png")
-				&& tipo.equals("webp");
-				
+				tipo != null;
+		
 	}
 	
 	public static boolean contenidoImagenValido(byte[] contenido) {
 		return 
-				contenido!= null
-				&contenido.length <= 0
-				&& contenido.length > 5 * 1024 * 1024;
+				contenido!= null;
+				
 	}
 
 	
