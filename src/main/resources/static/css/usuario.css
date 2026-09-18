@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f5;
+    color: #26332d;
+    min-height: 100vh;
+}
+
+.contenedor {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+.tarjeta {
+    width: 100%;
+    max-width: 460px;
+
+    background-color: white;
+
+    padding: 40px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.encabezado {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.huella {
+    display: block;
+
+    font-size: 42px;
+
+    margin-bottom: 10px;
+}
+
+.encabezado h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.encabezado p {
+    color: #777;
+    font-size: 15px;
+}
+
+.grupo {
+    margin-bottom: 20px;
+}
+
+.grupo label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.grupo input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #d5d9d7;
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.grupo input:focus {
+    border-color: #5c8d72;
+
+    box-shadow: 0 0 0 3px rgba(92, 141, 114, 0.12);
+}
+
+.grupo input.invalido {
+    border-color: #d9534f;
+}
+
+.error {
+    display: block;
+
+    min-height: 18px;
+
+    margin-top: 5px;
+
+    color: #d9534f;
+
+    font-size: 12px;
+}
+
+button {
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 5px;
+
+    border: none;
+    border-radius: 9px;
+
+    background-color: #5c8d72;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #4d7961;
+}
+
+button:active {
+    transform: scale(0.99);
+}
+
+button:disabled {
+    background-color: #aab5af;
+    cursor: not-allowed;
+}
+
+.mensaje {
+    display: none;
+
+    margin-top: 18px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+.mensaje.exito {
+    display: block;
+
+    background-color: #e6f4eb;
+    color: #34704b;
+}
+
+.mensaje.error-general {
+    display: block;
+
+    background-color: #fbe9e8;
+    color: #a94442;
+}
+
+@media (max-width: 500px) {
+
+    .contenedor {
+        padding: 15px;
+    }
+
+    .tarjeta {
+        padding: 28px 22px;
+    }
+
+    .encabezado h1 {
+        font-size: 24px;
+    }
+}

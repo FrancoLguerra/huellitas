@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<title>Crear Usuario | Huellitas</title>
+</head>
+<body>
+<main class="contenedor">
+
+        <section class="tarjeta">
+
+            <div class="encabezado">
+                <span class="huella">🐾</span>
+                <h1>Crear cuenta</h1>
+                <p>Registrate en Huellitas</p>
+            </div>
+
+            <form id="usuarioForm" th:action="@{/registro}" th:object="${form}" method="post">
+
+                <div class="grupo">
+                    <label for="nombre">Nombre</label>
+                    <input
+                    	th:field="*{nombre}"
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Ingresá tu nombre"
+                        maxlength="100"
+                        autocomplete="given-name"
+                        required
+                    >
+                    <span class="error" id="nombreError"></span>
+                </div>
+
+                <div class="grupo">
+                    <label for="apellido">Apellido</label>
+                    <input
+                    	th:field="*{apellido}"
+                        type="text"
+                        id="apellido"
+                        name="apellido"
+                        placeholder="Ingresá tu apellido"
+                        maxlength="100"
+                        autocomplete="family-name"
+                        required
+                    >
+                    <span class="error" id="apellidoError"></span>
+                </div>
+
+                <div class="grupo">
+                    <label for="mail">Correo electrónico</label>
+                    <input
+                    	th:field="*{mail}"
+                        type="email"
+                        id="mail"
+                        name="mail"
+                        placeholder="ejemplo@email.com"
+                        autocomplete="email"
+                        required
+                    >
+                    <span class="error" id="mailError"></span>
+                </div>
+
+                <div class="grupo">
+                    <label for="telefono">Teléfono</label>
+                    <input
+                    	th:field="*{telefono}"
+                        type="tel"
+                        id="telefono"
+                        name="telefono"
+                        placeholder="Ej: 2284123456"
+                        autocomplete="tel"
+                        required
+                    >
+                    <span class="error" id="telefonoError"></span>
+                </div>
+
+                <button type="submit" id="btnCrear">
+                    Crear usuario
+                </button>
+
+                <div id="mensaje" class="mensaje"></div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

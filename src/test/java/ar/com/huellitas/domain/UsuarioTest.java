@@ -189,7 +189,7 @@ public void crearUsuarioConNombreVacio() {
     	assertEquals(
     			Usuario.ERR_PUBLICACION_USUARIO_INCORRECTO,
     			ex.getMessage()
-    );
+    );	
 
     assertTrue(usuario.getPublicaciones().isEmpty());
 }

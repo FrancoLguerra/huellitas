@@ -1,9 +1,12 @@
 package ar.com.huellitas.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import ar.com.huellitas.domain.Usuario;
+import ar.com.huellitas.forms.RegistracionForm;
 import ar.com.huellitas.repositories.UsuarioRepository;
 
 @Service
@@ -16,8 +19,14 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public void guardar(Usuario usuario) {
-		this.repositorio.save(usuario);
+	public Usuario guardar(RegistracionForm registracionForm) {
+		Usuario usuario = new Usuario(registracionForm.getNombre(),registracionForm.getApellido(),registracionForm.getMail(),registracionForm.getTelefono());
+		return this.repositorio.save(usuario);
+		
+	}
+
+	public List<Usuario> listar() {
+		return repositorio.findAll();
 		
 	}
 	
