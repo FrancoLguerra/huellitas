@@ -30,11 +30,20 @@
                 <td th:text="${usuario.apellido}"></td>
                 <td th:text="${usuario.mail}"></td>
                 <td th:text="${usuario.telefono}"></td>
+                <td> <a th:href="@{/usuarios/{id}/editar(id=${usuario.id})}">
+            			<button type="button">Editar</button>
+            		 </a> 	
+            	</td>
+            	<td> <a th:href="@{/usuarios/{id}/eliminar(id=${usuario.id})}">
+            			<button type="button">Eliminar</button>
+            		 </a> 	
+            	</td>
 
             </tr>
 
         </tbody>
     </table>
+            
 
 </body>
 

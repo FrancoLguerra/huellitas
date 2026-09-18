@@ -29,6 +29,27 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return repositorio.findAll();
 		
 	}
+
+	public Usuario buscarPorId(Long id) {
+		
+		return repositorio.getById(id);
+	}
+
+	public Usuario actualizar(Long id, Usuario usuario) {
+		Usuario usuarioBase = buscarPorId(id);
+		usuarioBase.setNombre(usuario.getNombre());
+		usuarioBase.setApellido(usuario.getApellido());
+		usuarioBase.setMail(usuario.getMail());
+		usuarioBase.setTelefono(usuario.getTelefono());
+		
+		return this.repositorio.save(usuarioBase);
+	}
+	
+	public void eliminar(Long id) {
+		
+		Usuario usuario = buscarPorId(id);
+		this.repositorio.delete(usuario);
+	}
 	
 	
 }

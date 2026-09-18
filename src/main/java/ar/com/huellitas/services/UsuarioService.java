@@ -11,4 +11,5 @@ public interface UsuarioService {
 	public Usuario guardar(RegistracionForm registracionForm);
 	
 	public List<Usuario> listar();
+	public Usuario buscarPorId(Long id);
 }
