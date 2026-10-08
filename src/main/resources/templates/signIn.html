@@ -1,0 +1,351 @@
+
+<!-- <!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Iniciar sesión</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center min-vh-100">
+
+            <div class="col-12 col-sm-10 col-md-6 col-lg-4">
+
+                <div class="card shadow border-0">
+
+                    <div class="card-body p-4 p-md-5">
+
+                        <div class="text-center mb-4">
+
+                            <div class="mb-3">
+                                <div class="bg-primary text-white rounded-circle
+                                            d-inline-flex justify-content-center
+                                            align-items-center"
+                                     style="width: 70px; height: 70px;">
+                                    <span class="fs-3 fw-bold">G</span>
+                                </div>
+                            </div>
+
+                            <h1 class="h3 fw-bold">
+                                Bienvenido
+                            </h1>
+
+                            <p class="text-muted">
+                                Ingresá a tu cuenta
+                            </p>
+
+                        </div>
+
+                        <div
+                            th:if="${param.error}"
+                            class="alert alert-danger"
+                            role="alert">
+                            Usuario o contraseña incorrectos.
+                        </div>
+
+                        <div
+                            th:if="${param.logout}"
+                            class="alert alert-success"
+                            role="alert">
+                            Sesión cerrada correctamente.
+                        </div>
+
+                        <form th:action="@{/login}" method="post" th:object="${form}">
+
+                            <div class="mb-3">
+
+                                <label
+                                    for="username"
+                                    class="form-label">
+                                    Correo electrónico
+                                </label>
+
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="username"
+                                    name="username"
+                                    placeholder="correo@ejemplo.com"
+                                    autocomplete="email"
+                                    th:field="*{mail}"
+                                    required>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label
+                                    for="password"
+                                    class="form-label">
+                                    Contraseña
+                                </label>
+
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Contraseña"
+                                    autocomplete="current-password"
+                                    th:field="*{password}"
+                                    required>
+
+                            </div>
+
+                            <div class="d-flex justify-content-end mb-4">
+
+                                <a
+                                    href="/recuperar-password"
+                                    class="text-decoration-none">
+                                    ¿Olvidaste tu contraseña?
+                                </a>
+
+                            </div>
+
+                            <div class="d-grid">
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary btn-lg">
+                                    Iniciar sesión
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                        <div class="text-center mt-4">
+
+                            <span class="text-muted">
+                                ¿No tenés una cuenta?
+                            </span>
+
+                            <a
+                                href="/registracion"
+                                class="text-decoration-none fw-semibold">
+                                Registrate
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+ -->
+ 
+ <!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Iniciar sesión | Huellitas</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          th:href="@{/css/signIn.css}">
+
+</head>
+
+
+<body class="login-page">
+
+    <!-- DECORACIÓN -->
+
+    <div class="paw-decoration paw-top">
+        <i class="bi bi-paw-fill"></i>
+    </div>
+
+    <div class="paw-decoration paw-bottom">
+        <i class="bi bi-paw-fill"></i>
+    </div>
+
+
+    <!-- CONTENEDOR -->
+
+    <main class="login-container">
+
+        <section class="login-card">
+
+
+            <!-- LOGO -->
+
+            <div class="login-header">
+
+                <div class="login-logo">
+                    <i class="bi bi-paw-fill"></i>
+                </div>
+
+                <h1>Bienvenido</h1>
+
+                <p>
+                    Ingresá a tu cuenta
+                </p>
+
+            </div>
+
+
+            <!-- MENSAJE DE ERROR -->
+
+            <div th:if="${param.error}"
+                 class="alert alert-danger login-alert"
+                 role="alert">
+
+                <i class="bi bi-exclamation-circle me-2"></i>
+
+                Usuario o contraseña incorrectos.
+
+            </div>
+
+
+            <!-- MENSAJE DE LOGOUT -->
+
+            <div th:if="${param.logout}"
+                 class="alert alert-success login-alert"
+                 role="alert">
+
+                <i class="bi bi-check-circle me-2"></i>
+
+                Sesión cerrada correctamente.
+
+            </div>
+
+
+            <!-- FORMULARIO -->
+
+            <form th:action="@{/login}"
+                  method="post"
+                  th:object="${form}"
+                  class="login-form">
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="username">
+                        <i class="bi bi-envelope me-1"></i>
+                        Correo electrónico
+                    </label>
+
+                    <input type="email"
+                           id="username"
+                           name="username"
+                           class="form-control"
+                           placeholder="correo@ejemplo.com"
+                           autocomplete="email"
+                           th:field="*{mail}"
+                           required>
+
+                </div>
+
+
+                <!-- PASSWORD
+                     
+                     Por ahora queda comentado.
+                     Cuando implementemos el login con contraseña,
+                     simplemente se descomenta.
+
+                <div class="form-group">
+
+                    <label for="password">
+                        <i class="bi bi-lock me-1"></i>
+                        Contraseña
+                    </label>
+
+                    <input type="password"
+                           id="password"
+                           name="password"
+                           class="form-control"
+                           placeholder="Contraseña"
+                           autocomplete="current-password"
+                           th:field="*{password}"
+                           required>
+
+                </div>
+
+                -->
+
+
+                <!-- RECUPERAR PASSWORD -->
+
+                <div class="forgot-password">
+
+                    <a href="/recuperar-password">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+
+                </div>
+
+
+                <!-- BOTÓN -->
+
+                <button type="submit"
+                        class="btn-login">
+
+                    <span>
+                        Iniciar sesión
+                    </span>
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </button>
+
+
+            </form>
+
+
+            <!-- REGISTRO -->
+
+            <div class="register-section">
+
+                <span>
+                    ¿No tenés una cuenta?
+                </span>
+
+                <a href="/registracion">
+                    Registrate
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+</body>
+
+</html>

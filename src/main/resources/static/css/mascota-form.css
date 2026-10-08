@@ -1,0 +1,397 @@
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================= */
+
+.mascota-form-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 45px 30px 70px;
+}
+
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+.mascota-form-header {
+    margin-bottom: 30px;
+}
+
+.titulo-contenedor {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.titulo-icono {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #dff5f1;
+    color: #087f70;
+
+    border-radius: 15px;
+
+    font-size: 25px;
+}
+
+.titulo-contenedor h1 {
+    margin: 0;
+
+    color: #162c49;
+
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.titulo-contenedor p {
+    margin: 5px 0 0;
+
+    color: #6680a0;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   CARD DEL FORMULARIO
+   ========================================================= */
+
+.mascota-form-card {
+    background: #ffffff;
+
+    border: 1px solid #e4ebee;
+
+    border-radius: 18px;
+
+    box-shadow: 0 5px 20px rgba(22, 44, 73, 0.06);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CABECERA DEL FORMULARIO
+   ========================================================= */
+
+.form-card-header {
+    padding: 25px 30px;
+
+    border-bottom: 1px solid #e7edef;
+
+    background: #fbfdfd;
+}
+
+.form-card-header h2 {
+    margin: 0;
+
+    color: #162c49;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.form-card-header h2 i {
+    color: #087f70;
+}
+
+.form-card-header p {
+    margin: 5px 0 0;
+
+    color: #71859d;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   FORMULARIO
+   ========================================================= */
+
+.mascota-form {
+    padding: 30px;
+}
+
+.form-group {
+    margin-bottom: 23px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #29415e;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group label i {
+    color: #087f70;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.mascota-form .form-control,
+.mascota-form .form-select {
+    min-height: 46px;
+
+    border: 1px solid #d9e3e7;
+
+    border-radius: 9px;
+
+    color: #29415e;
+
+    font-size: 14px;
+
+    box-shadow: none;
+
+    transition: all 0.2s ease;
+}
+
+.mascota-form .form-control::placeholder {
+    color: #9aaaba;
+}
+
+.mascota-form .form-control:focus,
+.mascota-form .form-select:focus {
+    border-color: #087f70;
+
+    box-shadow: 0 0 0 3px rgba(8, 127, 112, 0.10);
+}
+
+
+/* =========================================================
+   CASTRADO
+   ========================================================= */
+
+.castrado-container {
+    margin-top: 5px;
+    margin-bottom: 30px;
+
+    padding: 17px 20px;
+
+    background: #f7fafb;
+
+    border: 1px solid #e3ebee;
+
+    border-radius: 11px;
+}
+
+.form-check {
+    margin: 0;
+}
+
+.form-check-input {
+    width: 19px;
+    height: 19px;
+
+    margin-top: 2px;
+
+    border-color: #b8c8d0;
+
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    background-color: #087f70;
+    border-color: #087f70;
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 3px rgba(8, 127, 112, 0.10);
+}
+
+.form-check-label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-left: 5px;
+
+    color: #29415e;
+
+    cursor: pointer;
+}
+
+.castrado-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #dff5f1;
+
+    color: #087f70;
+
+    border-radius: 8px;
+}
+
+.form-check-label strong {
+    display: block;
+
+    font-size: 14px;
+}
+
+.form-check-label small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #8192a5;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding-top: 5px;
+}
+
+.form-actions .btn {
+    min-height: 44px;
+
+    padding: 10px 20px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+
+/* CANCELAR */
+
+.btn-cancelar {
+    background: #ffffff;
+
+    border: 1px solid #d6e0e4;
+
+    color: #5f748c;
+}
+
+.btn-cancelar:hover {
+    background: #f5f8f9;
+
+    border-color: #c5d2d8;
+
+    color: #29415e;
+}
+
+
+/* GUARDAR */
+
+.btn-guardar {
+    background: #087f70;
+
+    border: 1px solid #087f70;
+
+    color: #ffffff;
+}
+
+.btn-guardar:hover {
+    background: #066d60;
+
+    border-color: #066d60;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 4px 10px rgba(8, 127, 112, 0.20);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .mascota-form-container {
+        padding: 30px 18px 50px;
+    }
+
+    .titulo-contenedor {
+        align-items: flex-start;
+    }
+
+    .titulo-icono {
+        width: 50px;
+        height: 50px;
+    }
+
+    .titulo-contenedor h1 {
+        font-size: 27px;
+    }
+
+    .mascota-form {
+        padding: 22px;
+    }
+
+    .form-card-header {
+        padding: 22px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .titulo-contenedor {
+        gap: 12px;
+    }
+
+    .titulo-icono {
+        width: 44px;
+        height: 44px;
+
+        font-size: 20px;
+    }
+
+    .titulo-contenedor h1 {
+        font-size: 23px;
+    }
+
+    .titulo-contenedor p {
+        font-size: 13px;
+    }
+
+    .mascota-form {
+        padding: 18px;
+    }
+}

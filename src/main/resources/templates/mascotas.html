@@ -1,0 +1,518 @@
+<!-- <!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Mascotas</title>
+
+</head>
+
+<body>
+
+    <h1>Mascotas</h1>
+
+    <a href="/mascotas/nuevo">
+        Nueva mascota
+    </a>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Especie</th>
+                <th>Género</th>
+                <th>Color</th>
+                <th>Raza</th>
+                <th>Castrado</th>
+                <th>Acciones</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr th:each="mascota : ${mascotas}">
+
+                <td th:text="${mascota.id}"></td>
+
+                <td th:text="${mascota.nombre}"></td>
+
+                <td th:text="${mascota.especie}"></td>
+
+                <td th:text="${mascota.genero}"></td>
+
+                <td th:text="${mascota.color}"></td>
+
+                <td th:text="${mascota.raza}"></td>
+
+                <td th:text="${mascota.castrado ? 'Sí' : 'No'}"></td>
+
+                <td>
+                    <a th:href="@{/mascotas/{id}/editar(id=${mascota.id})}">
+                        <button type="button">Editar</button>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{/mascotas/{id}/eliminar(id=${mascota.id})}">
+                    
+                        <button type="button" onclick="return confirm('¿Está seguro de eliminar esta mascota?');">Eliminar</button>
+                    </a>
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mascotas | Huellitas</title>
+
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+
+    <!-- Bootstrap Icons -->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+    <!-- Navbar -->
+
+    <link rel="stylesheet"
+          th:href="@{/css/navbar.css}">
+
+
+    <!-- CSS de Mascotas -->
+
+    <link rel="stylesheet"
+          th:href="@{/css/mascotas.css}">
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     NAVBAR
+========================================== -->
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+
+
+<!-- ==========================================
+     CONTENIDO
+========================================== -->
+
+<main class="mascotas-container">
+
+
+    <!-- ==========================================
+         ENCABEZADO
+    ========================================== -->
+
+    <div class="mascotas-header">
+
+
+        <div class="titulo-contenedor">
+
+            <div class="titulo-icono">
+
+                <i class="bi bi-heart-fill"></i>
+
+            </div>
+
+
+            <div>
+
+                <h1>Mascotas</h1>
+
+                <p>
+                    Administrá las mascotas registradas en Huellitas
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- NUEVA MASCOTA -->
+
+        <a th:href="@{/mascotas/nuevo}"
+           class="btn btn-huellitas">
+
+            <i class="bi bi-plus-lg me-2"></i>
+
+            Nueva mascota
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- ==========================================
+         TARJETA
+    ========================================== -->
+
+    <section class="mascotas-card">
+
+
+        <!-- CABECERA -->
+
+        <div class="tabla-header">
+
+            <div>
+
+                <h2>
+                    Lista de mascotas
+                </h2>
+
+                <p>
+                    Mascotas registradas actualmente
+                </p>
+
+            </div>
+
+
+            <!-- CANTIDAD -->
+
+            <span class="cantidad">
+
+                <i class="bi bi-heart-fill me-1"></i>
+
+                <span th:text="${#lists.size(mascotas)}">
+                    0
+                </span>
+
+            </span>
+
+        </div>
+
+
+
+        <!-- ==========================================
+             TABLA
+        ========================================== -->
+
+        <div class="table-responsive">
+
+            <table class="table mascotas-table">
+
+
+                <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Nombre</th>
+
+                    <th>Especie</th>
+
+                    <th>Género</th>
+
+                    <th>Color</th>
+
+                    <th>Raza</th>
+
+                    <th>Castrado</th>
+
+                    <th class="text-center">
+                        Acciones
+                    </th>
+
+                </tr>
+
+                </thead>
+
+
+
+                <tbody>
+
+
+                <!-- ==================================
+                     MASCOTA
+                ================================== -->
+
+                <tr th:each="mascota : ${mascotas}">
+
+
+                    <!-- ID -->
+
+                    <td>
+
+                        <span class="mascota-id"
+                              th:text="${mascota.id}">
+
+                            1
+
+                        </span>
+
+                    </td>
+
+
+
+                    <!-- NOMBRE -->
+
+                    <td>
+
+                        <div class="mascota-nombre">
+
+
+                            <span class="mascota-avatar">
+
+                                <i class="bi bi-heart-fill"></i>
+
+                            </span>
+
+
+                            <span th:text="${mascota.nombre}">
+
+                                Firulais
+
+                            </span>
+
+
+                        </div>
+
+                    </td>
+
+
+
+                    <!-- ESPECIE -->
+
+                    <td>
+
+                        <span class="dato-mascota"
+                              th:text="${mascota.especie}">
+
+                            PERRO
+
+                        </span>
+
+                    </td>
+
+
+
+                    <!-- GÉNERO -->
+
+                    <td>
+
+                        <span class="dato-mascota"
+                              th:text="${mascota.genero}">
+
+                            MACHO
+
+                        </span>
+
+                    </td>
+
+
+
+                    <!-- COLOR -->
+
+                    <td th:text="${mascota.color}">
+
+                        Marrón
+
+                    </td>
+
+
+
+                    <!-- RAZA -->
+
+                    <td>
+
+                        <span th:if="${mascota.raza != null and !mascota.raza.isBlank()}"
+                              th:text="${mascota.raza}">
+
+                            Labrador
+
+                        </span>
+
+                        <span th:if="${mascota.raza == null or mascota.raza.isBlank()}"
+                              class="sin-dato">
+
+                            Sin especificar
+
+                        </span>
+
+                    </td>
+
+
+
+                    <!-- CASTRADO -->
+
+                    <td>
+
+                        <span th:if="${mascota.castrado}"
+                              class="estado estado-si">
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            Sí
+
+                        </span>
+
+
+                        <span th:unless="${mascota.castrado}"
+                              class="estado estado-no">
+
+                            <i class="bi bi-x-circle-fill"></i>
+
+                            No
+
+                        </span>
+
+                    </td>
+
+
+
+                    <!-- ==================================
+                         ACCIONES
+                    ================================== -->
+
+                    <td>
+
+                        <div class="acciones">
+
+
+                            <!-- EDITAR -->
+
+                            <a th:href="@{/mascotas/{id}/editar(id=${mascota.id})}"
+                               class="btn btn-editar"
+                               title="Editar mascota">
+
+                                <i class="bi bi-pencil"></i>
+
+                                <span>Editar</span>
+
+                            </a>
+
+
+
+                            <!-- ELIMINAR -->
+
+                            <a th:href="@{/mascotas/{id}/eliminar(id=${mascota.id})}"
+                               class="btn btn-eliminar"
+                               title="Eliminar mascota"
+                               onclick="return confirm('¿Está seguro de eliminar esta mascota?');">
+
+                                <i class="bi bi-trash3"></i>
+
+                                <span>Eliminar</span>
+
+                            </a>
+
+
+                        </div>
+
+                    </td>
+
+
+                </tr>
+
+
+
+                <!-- ==================================
+                     SIN MASCOTAS
+                ================================== -->
+
+                <tr th:if="${#lists.isEmpty(mascotas)}">
+
+                    <td colspan="8">
+
+
+                        <div class="sin-mascotas">
+
+
+                            <div class="sin-mascotas-icono">
+
+                                <i class="bi bi-heart"></i>
+
+                            </div>
+
+
+                            <h3>
+                                No hay mascotas registradas
+                            </h3>
+
+
+                            <p>
+                                Todavía no se registraron mascotas en Huellitas.
+                            </p>
+
+
+                            <a th:href="@{/mascotas/nuevo}"
+                               class="btn btn-huellitas">
+
+                                <i class="bi bi-plus-lg me-2"></i>
+
+                                Registrar primera mascota
+
+                            </a>
+
+
+                        </div>
+
+
+                    </td>
+
+                </tr>
+
+
+                </tbody>
+
+
+            </table>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ==========================================
+     BOOTSTRAP JS
+========================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous">
+</script>
+
+
+</body>
+
+</html>

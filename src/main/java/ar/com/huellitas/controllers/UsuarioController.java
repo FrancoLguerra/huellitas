@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 import ar.com.huellitas.domain.Usuario;
+import ar.com.huellitas.forms.RegistracionForm;
 import ar.com.huellitas.services.UsuarioServiceImpl;
 
 @Controller
@@ -48,9 +49,12 @@ public class UsuarioController {
 	  @PostMapping("/usuarios/{id}")
 	  public String actualizar(
 	          @PathVariable("id") Long id,
-	          @ModelAttribute Usuario usuario) {
+	          @ModelAttribute("form") RegistracionForm form) {
 
-	      usuarioService.actualizar(id, usuario);
+	      usuarioService.actualizar(id, form.getNombre(),
+	              form.getApellido(),
+	              form.getMail(),
+	              form.getTelefono());
 
 	      return "redirect:/usuarios";
 	  }

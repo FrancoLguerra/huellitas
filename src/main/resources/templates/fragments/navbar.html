@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<nav th:fragment="navbar"
+     th:id="navbar"
+     class="navbar navbar-expand-lg">
+
+    <div class="container-fluid">
+
+        <!-- LOGO -->
+        <a class="navbar-brand" href="/">
+
+            <span class="logo-huellita">
+                <i class="bi bi-paw-fill"></i>
+            </span>
+
+            <span class="logo-text">
+                Huellitas
+                <small>Perdidos y encontrados</small>
+            </span>
+
+        </a>
+
+
+        <!-- BOTÓN MOBILE -->
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <!-- CONTENIDO NAVBAR -->
+        <div class="collapse navbar-collapse"
+             id="navbarSupportedContent">
+
+
+            <!-- MENÚ -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <!-- INICIO -->
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       th:href="@{/}">
+
+                        <i class="bi bi-house-door me-1"></i>
+
+                        Inicio
+
+                    </a>
+
+                </li>
+
+
+                <!-- ADMINISTRAR -->
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link dropdown-toggle"
+                       href="#"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+
+                        <i class="bi bi-grid me-1"></i>
+
+                        Administrar
+
+                    </a>
+
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+
+                            <a class="dropdown-item"
+                               th:href="@{/usuarios}">
+
+                                <i class="bi bi-people me-2"></i>
+
+                                Usuarios
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+
+                        <li>
+
+                            <a class="dropdown-item"
+                               th:href="@{/mascotas}">
+
+                                <i class="bi bi-heart me-2"></i>
+
+                                Mascotas
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+
+                        <li>
+
+                            <a class="dropdown-item"
+                               href="#">
+
+                                <i class="bi bi-three-dots me-2"></i>
+
+                                Something else here
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </li>
+
+
+                <!-- BUSCAR -->
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="#">
+
+                        <i class="bi bi-search me-1"></i>
+
+                        Buscar
+
+                    </a>
+
+                </li>
+
+
+                <!-- PUBLICACIONES -->
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="#">
+
+                        <i class="bi bi-heart me-1"></i>
+
+                        Mis publicaciones
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <!-- BUSCADOR -->
+            <form class="d-flex"
+                  role="search">
+
+                <input class="form-control me-2"
+                       type="search"
+                       placeholder="Buscar"
+                       aria-label="Buscar">
+
+                <button class="btn btn-outline-success"
+                        type="submit">
+
+                    <i class="bi bi-search"></i>
+
+                </button>
+
+            </form>
+
+
+            <!-- PERFIL -->
+            <ul class="navbar-nav mb-2 mb-lg-0">
+
+                <li class="nav-item">
+
+                    <a class="nav-link perfil-link"
+                       href="#">
+
+                        <span class="perfil-avatar">
+                            FG
+                        </span>
+
+                        Perfil
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+</body>
+</html>

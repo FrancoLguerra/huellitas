@@ -1,0 +1,474 @@
+/* =========================================================
+   PUBLICACIONES
+   ========================================================= */
+
+body {
+    background-color: #f7f9f8;
+}
+
+
+/* =========================================================
+   CONTENEDOR
+   ========================================================= */
+
+.publicaciones-container {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 35px;
+}
+
+.page-header h1 {
+    margin: 0;
+
+    font-size: 2rem;
+    font-weight: 700;
+
+    color: #26332d;
+}
+
+.page-header h1 i {
+    margin-right: 8px;
+
+    color: #5b8c72;
+}
+
+.page-header p {
+    margin-top: 6px;
+    margin-bottom: 0;
+
+    color: #7b8781;
+
+    font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   BOTÓN PRINCIPAL
+   ========================================================= */
+
+.btn-huellitas {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 18px;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #5b8c72;
+    color: white;
+
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+.btn-huellitas:hover {
+    background-color: #4d7b63;
+
+    color: white;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.publicacion-card {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+
+    border: 1px solid #e4eae6;
+
+    border-radius: 16px;
+
+    padding: 22px;
+
+    box-shadow: 0 4px 15px rgba(40, 60, 50, 0.06);
+
+    transition: all 0.2s ease;
+}
+
+.publicacion-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 24px rgba(40, 60, 50, 0.11);
+}
+
+
+/* =========================================================
+   CABECERA CARD
+   ========================================================= */
+
+.publicacion-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+.publication-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background-color: #edf5ef;
+
+    color: #5b8c72;
+
+    font-size: 1.25rem;
+}
+
+
+/* =========================================================
+   ESTADO
+   ========================================================= */
+
+.estado-badge {
+    padding: 7px 11px;
+
+    border-radius: 20px;
+
+    background-color: #eaf5ed;
+
+    color: #4e805f;
+
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   MASCOTA
+   ========================================================= */
+
+.mascota-info {
+    margin-bottom: 18px;
+}
+
+.mascota-info h3 {
+    margin-bottom: 8px;
+
+    color: #26332d;
+
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.mascota-datos {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    color: #78847e;
+
+    font-size: 0.88rem;
+}
+
+.mascota-datos span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.mascota-datos i {
+    color: #5b8c72;
+}
+
+
+/* =========================================================
+   DETALLES
+   ========================================================= */
+
+.publicacion-detalles {
+    display: flex;
+    flex-direction: column;
+
+    gap: 11px;
+
+    padding: 15px 0;
+
+    border-top: 1px solid #edf0ee;
+    border-bottom: 1px solid #edf0ee;
+}
+
+.detalle {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.detalle > i {
+    width: 18px;
+
+    color: #5b8c72;
+
+    font-size: 1rem;
+
+    text-align: center;
+}
+
+.detalle div {
+    display: flex;
+    flex-direction: column;
+}
+
+.detalle small {
+    color: #929b96;
+
+    font-size: 0.72rem;
+
+    margin-bottom: 1px;
+}
+
+.detalle span {
+    color: #48534d;
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   TEXTO ADICIONAL
+   ========================================================= */
+
+.publicacion-texto {
+    margin-top: 15px;
+}
+
+.publicacion-texto p {
+    margin: 0;
+
+    color: #69746e;
+
+    font-size: 0.88rem;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FOOTER CARD
+   ========================================================= */
+
+.publicacion-footer {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: auto;
+    padding-top: 18px;
+}
+
+.fecha {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    color: #929b96;
+
+    font-size: 0.75rem;
+}
+
+.fecha i {
+    color: #5b8c72;
+}
+
+
+/* =========================================================
+   ACCIONES
+   ========================================================= */
+
+.acciones {
+    display: flex;
+
+    gap: 6px;
+}
+
+.btn-action {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    transition: all 0.2s ease;
+}
+
+.btn-view {
+    background-color: #edf4f7;
+    color: #557d8c;
+}
+
+.btn-view:hover {
+    background-color: #dcebf0;
+    color: #456d7b;
+}
+
+.btn-edit {
+    background-color: #f4f1e7;
+    color: #927d46;
+}
+
+.btn-edit:hover {
+    background-color: #ebe4d1;
+    color: #7d6938;
+}
+
+.btn-delete {
+    background-color: #f9eeee;
+    color: #a66060;
+}
+
+.btn-delete:hover {
+    background-color: #f3dede;
+    color: #8f4e4e;
+}
+
+
+/* =========================================================
+   ESTADO VACÍO
+   ========================================================= */
+
+.empty-state {
+    max-width: 600px;
+
+    margin: 50px auto;
+
+    padding: 55px 30px;
+
+    text-align: center;
+
+    background-color: white;
+
+    border: 1px solid #e4eae6;
+
+    border-radius: 16px;
+
+    box-shadow: 0 4px 15px rgba(40, 60, 50, 0.05);
+}
+
+.empty-icon {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    background-color: #edf5ef;
+
+    color: #5b8c72;
+
+    font-size: 1.8rem;
+}
+
+.empty-state h3 {
+    margin-bottom: 8px;
+
+    color: #35423b;
+
+    font-weight: 700;
+}
+
+.empty-state p {
+    margin-bottom: 22px;
+
+    color: #89938e;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .publicaciones-container {
+        padding-top: 25px;
+    }
+
+    .page-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .page-header h1 {
+        font-size: 1.7rem;
+    }
+
+    .btn-huellitas {
+        width: 100%;
+
+        justify-content: center;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .publicacion-card {
+        padding: 18px;
+    }
+
+    .publicacion-footer {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .acciones {
+        width: 100%;
+    }
+
+    .btn-action {
+        flex: 1;
+    }
+}

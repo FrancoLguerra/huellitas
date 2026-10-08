@@ -1,0 +1,325 @@
+/* ==========================================
+   GENERAL
+========================================== */
+
+body {
+    background-color: #f7fafb;
+    color: #162c49;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ==========================================
+   CONTENEDOR
+========================================== */
+
+.contenedor {
+    min-height: calc(100vh - 82px);
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 55px 30px;
+}
+
+
+/* ==========================================
+   TARJETA
+========================================== */
+
+.tarjeta {
+    width: 100%;
+    max-width: 720px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e8eeee;
+    border-radius: 20px;
+
+    padding: 40px;
+
+    box-shadow: 0 8px 30px rgba(22, 44, 73, 0.07);
+}
+
+
+/* ==========================================
+   ENCABEZADO
+========================================== */
+
+.encabezado {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 35px;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #edf2f2;
+}
+
+.huella {
+    width: 58px;
+    height: 58px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background-color: #e1f5f1;
+
+    color: #087f70;
+
+    font-size: 27px;
+}
+
+.encabezado h1 {
+    margin: 0;
+
+    color: #162c49;
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.encabezado p {
+    margin: 5px 0 0;
+
+    color: #71839b;
+
+    font-size: 15px;
+}
+
+
+/* ==========================================
+   CAMPOS
+========================================== */
+
+.campo {
+    margin-bottom: 5px;
+}
+
+.campo label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #284766;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   INPUT WRAPPER
+========================================== */
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper > i {
+    position: absolute;
+
+    left: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #7190a8;
+
+    font-size: 16px;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+.input-wrapper .form-control {
+    min-height: 48px;
+
+    padding-left: 43px;
+
+    border: 1px solid #dce6ea;
+
+    border-radius: 10px;
+
+    color: #284766;
+
+    background-color: #ffffff;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.input-wrapper .form-control::placeholder {
+    color: #a1afbd;
+}
+
+.input-wrapper .form-control:focus {
+    border-color: #75c9bc;
+
+    box-shadow: 0 0 0 0.2rem rgba(8, 127, 112, 0.10);
+}
+
+
+/* ==========================================
+   ERROR
+========================================== */
+
+.error {
+    display: block;
+
+    min-height: 18px;
+
+    margin-top: 5px;
+
+    color: #dc3545;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   ERROR BOOTSTRAP / THYMELEAF
+========================================== */
+
+.input-wrapper .form-control.is-invalid {
+    border-color: #dc3545;
+
+    background-image: none;
+
+    padding-right: 43px;
+}
+
+.input-wrapper .form-control.is-invalid:focus {
+    border-color: #dc3545;
+
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.10);
+}
+
+.feedback.invalid-feedback {
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   ACCIONES
+========================================== */
+
+.acciones {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 15px;
+}
+
+
+/* ==========================================
+   BOTÓN HUELLITAS
+========================================== */
+
+.btn-huellitas {
+    min-height: 48px;
+
+    padding: 10px 24px;
+
+    border-radius: 10px;
+
+    background-color: #087f70 !important;
+    border-color: #087f70 !important;
+
+    color: #ffffff !important;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn-huellitas:hover {
+    background-color: #066b60 !important;
+    border-color: #066b60 !important;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 5px 15px rgba(8, 127, 112, 0.20);
+}
+
+.btn-huellitas:active {
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   MENSAJE
+========================================== */
+
+.mensaje {
+    width: 100%;
+
+    margin-top: 5px;
+
+    text-align: center;
+
+    color: #71839b;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 767px) {
+
+    .contenedor {
+        padding: 30px 15px;
+    }
+
+    .tarjeta {
+        padding: 28px 22px;
+
+        border-radius: 16px;
+    }
+
+    .encabezado {
+        margin-bottom: 28px;
+    }
+
+    .encabezado h1 {
+        font-size: 24px;
+    }
+
+    .huella {
+        width: 50px;
+        height: 50px;
+
+        font-size: 23px;
+    }
+
+    .acciones {
+        justify-content: stretch;
+    }
+
+    .btn-huellitas {
+        width: 100%;
+    }
+}

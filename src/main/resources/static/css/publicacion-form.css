@@ -1,0 +1,367 @@
+/* ================================
+   PÁGINA
+================================ */
+
+.form-page {
+    min-height: calc(100vh - 70px);
+    padding: 45px 20px 60px;
+
+    background: #f5f7f5;
+}
+
+
+/* ================================
+   CONTENEDOR
+================================ */
+
+.form-container {
+    width: 100%;
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.form-header {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 35px;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #e8ece9;
+}
+
+
+.header-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background: #e8f1eb;
+
+    color: #5b8c72;
+
+    border-radius: 15px;
+
+    font-size: 26px;
+}
+
+
+.form-header h1 {
+    margin: 0;
+
+    color: #30483b;
+
+    font-size: 28px;
+
+    font-weight: 700;
+}
+
+
+.form-header p {
+    margin: 5px 0 0;
+
+    color: #7b867f;
+
+    font-size: 15px;
+}
+
+
+/* ================================
+   SECCIONES
+================================ */
+
+.form-section {
+    margin-bottom: 28px;
+
+    padding: 22px;
+
+    background: #fafcfb;
+
+    border: 1px solid #e6ece8;
+
+    border-radius: 14px;
+}
+
+
+.section-title {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 20px;
+
+    color: #4f7f66;
+
+    font-size: 17px;
+
+    font-weight: 700;
+}
+
+
+.section-title i {
+    font-size: 19px;
+}
+
+
+/* ================================
+   CAMPOS
+================================ */
+
+.form-group {
+    width: 100%;
+}
+
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #37463d;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.form-control {
+    min-height: 46px;
+
+    border: 1px solid #d7dfda;
+
+    border-radius: 10px;
+
+    padding: 10px 14px;
+
+    color: #34443a;
+
+    background: #ffffff;
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.form-control:focus {
+    border-color: #5b8c72;
+
+    box-shadow: 0 0 0 3px rgba(91, 140, 114, 0.14);
+
+    outline: none;
+}
+
+
+.form-control::placeholder {
+    color: #a5ada8;
+}
+
+
+/* ================================
+   AYUDA
+================================ */
+
+.form-group small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #8a948e;
+
+    font-size: 12px;
+}
+
+
+/* ================================
+   TEXTAREA
+================================ */
+
+.textarea {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+
+.character-counter {
+    margin-top: 7px;
+
+    text-align: right;
+
+    color: #929b96;
+
+    font-size: 12px;
+}
+
+
+/* ================================
+   BOTONES
+================================ */
+
+.form-actions {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 10px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #e8ece9;
+}
+
+
+.btn-cancel,
+.btn-submit {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 45px;
+
+    padding: 10px 20px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* Cancelar */
+
+.btn-cancel {
+    color: #59635d;
+
+    background: #eef1ef;
+
+    border: 1px solid #dfe5e1;
+}
+
+
+.btn-cancel:hover {
+    color: #3f4943;
+
+    background: #e4e9e6;
+
+    transform: translateY(-1px);
+}
+
+
+/* Guardar */
+
+.btn-submit {
+    color: #ffffff;
+
+    background: #5b8c72;
+
+    border: 1px solid #5b8c72;
+}
+
+
+.btn-submit:hover {
+    color: #ffffff;
+
+    background: #4e7d64;
+
+    border-color: #4e7d64;
+
+    box-shadow: 0 5px 15px rgba(91, 140, 114, 0.25);
+
+    transform: translateY(-1px);
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+
+    .form-page {
+        padding: 25px 12px 40px;
+    }
+
+
+    .form-container {
+        padding: 25px 18px;
+
+        border-radius: 14px;
+    }
+
+
+    .form-header {
+        align-items: flex-start;
+    }
+
+
+    .form-header h1 {
+        font-size: 23px;
+    }
+
+
+    .form-header p {
+        font-size: 14px;
+    }
+
+
+    .form-section {
+        padding: 18px;
+    }
+
+
+    .form-actions {
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+
+    .btn-cancel,
+    .btn-submit {
+        width: 100%;
+    }
+
+}

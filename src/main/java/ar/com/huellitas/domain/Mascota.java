@@ -53,6 +53,9 @@ public class Mascota {
 		}
 		this.nombre = nombre;
 	}
+	public EspecieMascota getEspecie() {
+	    return especie;
+	}
 
 	public void setEspecie(EspecieMascota especie) {
 		this.especie = especie;

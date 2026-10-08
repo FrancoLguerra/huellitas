@@ -13,7 +13,7 @@
 	</parent>
     <groupId>ar.com.huellitas</groupId>
     <artifactId>huellitas</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
 
     <name>Huellitas</name>
     
@@ -40,10 +40,19 @@
     		<groupId>org.springframework.boot</groupId>
     		<artifactId>spring-boot-starter-thymeleaf</artifactId>
     	</dependency>
+    	  <dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-security</artifactId>
+    	</dependency>
+    	<dependency>
+    		<groupId>org.thymeleaf.extras</groupId>
+    		<artifactId>thymeleaf-extras-springsecurity6</artifactId>
+    	</dependency>
     	<dependency>
     		<groupId>org.springframework.boot</groupId>
     		<artifactId>spring-boot-starter-test</artifactId>
     		<scope>test</scope>
+    	
 <!--    		<exclusions>
     			<exclusion>
     				<groupId> org.junit.platform</groupId>
@@ -68,6 +77,11 @@
 		    <artifactId>spring-boot-devtools</artifactId>
 		    <scope>compile</scope>
 		</dependency>	
+		<dependency>
+		    <groupId>org.modelmapper</groupId>
+		    <artifactId>modelmapper</artifactId>
+		    <version>3.2.0</version>
+		</dependency>
     </dependencies>
     <build>
     	<plugins>

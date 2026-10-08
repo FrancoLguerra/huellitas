@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import ar.com.huellitas.domain.Publicacion;
 
-import ar.com.huellitas.domain.Usuario;
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
-	public List<Usuario> findByMail(String mail);
-	
+public interface PublicacionRepository extends JpaRepository<Publicacion,Long>{
+
+	List<Publicacion> findByPublicadoPorId(Long id);
 
 }

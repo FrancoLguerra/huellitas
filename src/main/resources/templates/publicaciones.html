@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Publicaciones | Huellitas</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Navbar -->
+    <link rel="stylesheet"
+          th:href="@{/css/navbar.css}">
+
+    <!-- Estilos de publicaciones -->
+    <link rel="stylesheet"
+          th:href="@{/css/publicaciones.css}">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+
+    <main class="container publicaciones-container">
+
+        <!-- ENCABEZADO -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h1>
+                    <i class="bi bi-heart-fill"></i>
+                    Publicaciones
+                </h1>
+
+                <p>
+                    Mascotas perdidas y encontradas
+                </p>
+
+            </div>
+
+            <a th:href="@{/publicaciones/nueva}"
+               class="btn btn-huellitas">
+
+                <i class="bi bi-plus-lg"></i>
+
+                Nueva publicación
+
+            </a>
+
+        </div>
+
+
+        <!-- CONTENIDO -->
+
+        <div th:if="${#lists.isEmpty(publicaciones)}"
+             class="empty-state">
+
+            <div class="empty-icon">
+
+                <i class="bi bi-heart"></i>
+
+            </div>
+
+            <h3>No hay publicaciones</h3>
+
+            <p>
+                Todavía no se han registrado publicaciones.
+            </p>
+
+            <a th:href="@{/publicaciones/nueva}"
+               class="btn btn-huellitas">
+
+                <i class="bi bi-plus-lg"></i>
+
+                Crear publicación
+
+            </a>
+
+        </div>
+
+
+        <!-- GRID DE PUBLICACIONES -->
+
+        <div th:unless="${#lists.isEmpty(publicaciones)}"
+             class="row g-4">
+
+            <div class="col-12 col-md-6 col-xl-4"
+                 th:each="publicacion : ${publicaciones}">
+
+                <div class="publicacion-card">
+
+                    <!-- CABECERA -->
+
+                    <div class="publicacion-header">
+
+                        <div class="publication-icon">
+
+                            <i class="bi bi-heart-fill"></i>
+
+                        </div>
+
+                        <span class="badge estado-badge"
+                              th:text="${publicacion.estado}">
+                            ACTIVA
+                        </span>
+
+                    </div>
+
+
+                    <!-- INFORMACIÓN DE MASCOTA -->
+
+                    <div class="mascota-info">
+
+                        <h3
+                            th:text="${publicacion.mascota.nombre != null
+                                ? publicacion.mascota.nombre
+                                : 'Sin nombre'}">
+                            Nombre mascota
+                        </h3>
+
+                        <div class="mascota-datos">
+
+                            <span>
+                                <i class="bi bi-paw-fill"></i>
+
+                                <span
+                                    th:text="${publicacion.mascota.especie}">
+                                    Perro
+                                </span>
+
+                            </span>
+
+                            <span
+                                th:if="${publicacion.mascota.genero != null}">
+
+                                <i class="bi bi-gender-ambiguous"></i>
+
+                                <span
+                                    th:text="${publicacion.mascota.genero}">
+                                    Macho
+                                </span>
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DETALLES -->
+
+                    <div class="publicacion-detalles">
+
+                        <div class="detalle"
+                             th:if="${publicacion.mascota.color != null}">
+
+                            <i class="bi bi-palette"></i>
+
+                            <div>
+                                <small>Color</small>
+                                <span
+                                    th:text="${publicacion.mascota.color}">
+                                    Negro
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="detalle"
+                             th:if="${publicacion.mascota.raza != null
+                                 and !#strings.isEmpty(publicacion.mascota.raza)}">
+
+                            <i class="bi bi-info-circle"></i>
+
+                            <div>
+                                <small>Raza</small>
+                                <span
+                                    th:text="${publicacion.mascota.raza}">
+                                    Labrador
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="detalle"
+                             th:if="${publicacion.ubicacion != null}">
+
+                            <i class="bi bi-geo-alt"></i>
+
+                            <div>
+                                <small>Ubicación</small>
+                                <span
+                                    th:text="${publicacion.ubicacion}">
+                                    Centro
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TEXTO -->
+
+                    <div class="publicacion-texto"
+                         th:if="${publicacion.textoAdicional != null
+                             and !#strings.isEmpty(publicacion.textoAdicional)}">
+
+                        <p th:text="${publicacion.textoAdicional}">
+                            Texto adicional de la publicación.
+                        </p>
+
+                    </div>
+
+
+                    <!-- PIE -->
+
+                    <div class="publicacion-footer">
+
+                        <div class="fecha">
+
+                            <i class="bi bi-calendar3"></i>
+
+                            <span
+                                th:text="${#temporals.format(
+                                    publicacion.fecha,
+                                    'dd/MM/yyyy HH:mm')}">
+                                01/10/2026 15:30
+                            </span>
+
+                        </div>
+
+
+                        <div class="acciones">
+
+                            <a th:href="@{/publicaciones/{id}(id=${publicacion.id})}"
+                               class="btn-action btn-view"
+                               title="Ver publicación">
+
+                                <i class="bi bi-eye"></i>
+
+                            </a>
+
+                            <a th:href="@{/publicaciones/{id}/editar(id=${publicacion.id})}"
+                               class="btn-action btn-edit"
+                               title="Editar publicación">
+
+                                <i class="bi bi-pencil"></i>
+
+                            </a>
+
+                            <a th:href="@{/publicaciones/{id}/eliminar(id=${publicacion.id})}"
+                               class="btn-action btn-delete"
+                               title="Eliminar publicación"
+                               onclick="return confirm('¿Seguro que querés eliminar esta publicación?');">
+
+                                <i class="bi bi-trash"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Bootstrap JS -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+
+</html>

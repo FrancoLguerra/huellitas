@@ -1,0 +1,424 @@
+<!-- <!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Nueva mascota</title>
+
+</head>
+
+<body>
+
+    <h1>Registrar mascota</h1>
+
+    <form th:action="@{/mascotas}"
+          th:object="${form}"
+          method="post">
+
+        <div>
+
+            <label for="nombre">
+                Nombre
+            </label>
+
+            <input type="text"
+                   id="nombre"
+                   th:field="*{nombre}">
+
+        </div>
+
+
+        <div>
+
+            <label for="especie">
+                Especie
+            </label>
+
+            <select id="especie"
+                    th:field="*{especie}">
+
+                <option value="">
+                    Seleccionar especie
+                </option>
+
+                <option th:each="especie : ${especies}"
+                        th:value="${especie}"
+                        th:text="${especie}">
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div>
+
+            <label for="genero">
+                Género
+            </label>
+
+            <select id="genero"
+                    th:field="*{genero}">
+
+                <option value="">
+                    Seleccionar género
+                </option>
+
+                <option th:each="genero : ${generos}"
+                        th:value="${genero}"
+                        th:text="${genero}">
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div>
+
+            <label for="color">
+                Color
+            </label>
+
+            <input type="text"
+                   id="color"
+                   th:field="*{color}">
+
+        </div>
+
+
+        <div>
+
+            <label for="raza">
+                Raza
+            </label>
+
+            <input type="text"
+                   id="raza"
+                   th:field="*{raza}">
+
+        </div>
+
+
+        <div>
+
+            <label for="castrado">
+                Castrado
+            </label>
+
+            <input type="checkbox"
+                   id="castrado"
+                   th:field="*{castrado}">
+
+        </div>
+
+
+        <button type="submit">
+            Guardar
+        </button>
+
+        <a href="/mascotas">
+            Cancelar
+        </a>
+
+    </form>
+
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mascota | Huellitas</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Navbar -->
+    <link rel="stylesheet"
+          th:href="@{/css/navbar.css}">
+
+    <!-- Estilos de la vista -->
+    <link rel="stylesheet"
+          th:href="@{/css/mascota-form.css}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+
+<main class="mascota-form-container">
+
+    <!-- ENCABEZADO -->
+
+    <div class="mascota-form-header">
+
+        <div class="titulo-contenedor">
+
+            <div class="titulo-icono">
+                <i class="bi bi-heart-fill"></i>
+            </div>
+
+            <div>
+
+                <h1 th:if="${id == null}">
+                    Registrar mascota
+                </h1>
+
+                <h1 th:if="${id != null}">
+                    Editar mascota
+                </h1>
+
+                <p th:if="${id == null}">
+                    Completá los datos para registrar una nueva mascota
+                </p>
+
+                <p th:if="${id != null}">
+                    Modificá los datos de la mascota
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FORMULARIO -->
+
+    <section class="mascota-form-card">
+
+        <div class="form-card-header">
+
+            <div>
+
+                <h2>
+                    <i class="bi bi-heart me-2"></i>
+                    Datos de la mascota
+                </h2>
+
+                <p>
+                    Ingresá la información correspondiente
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form th:action="${id == null}
+                         ? @{/mascotas}
+                         : @{/mascotas/{id}(id=${id})}"
+              th:object="${form}"
+              method="post"
+              class="mascota-form">
+
+
+            <!-- NOMBRE -->
+
+            <div class="form-group">
+
+                <label for="nombre">
+                    <i class="bi bi-tag me-1"></i>
+                    Nombre
+                </label>
+
+                <input type="text"
+                       id="nombre"
+                       th:field="*{nombre}"
+                       class="form-control"
+                       placeholder="Ej: Luna"
+                       maxlength="100">
+
+            </div>
+
+
+            <!-- ESPECIE -->
+
+            <div class="form-group">
+
+                <label for="especie">
+                    <i class="bi bi-paw-fill me-1"></i>
+                    Especie
+                </label>
+
+                <select id="especie"
+                        th:field="*{especie}"
+                        class="form-select">
+
+                    <option value="">
+                        Seleccionar especie
+                    </option>
+
+                    <option th:each="especie : ${especies}"
+                            th:value="${especie}"
+                            th:text="${especie}">
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- GENERO -->
+
+            <div class="form-group">
+
+                <label for="genero">
+                    <i class="bi bi-gender-ambiguous me-1"></i>
+                    Género
+                </label>
+
+                <select id="genero"
+                        th:field="*{genero}"
+                        class="form-select">
+
+                    <option value="">
+                        Seleccionar género
+                    </option>
+
+                    <option th:each="genero : ${generos}"
+                            th:value="${genero}"
+                            th:text="${genero}">
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- COLOR -->
+
+            <div class="form-group">
+
+                <label for="color">
+                    <i class="bi bi-palette me-1"></i>
+                    Color
+                </label>
+
+                <input type="text"
+                       id="color"
+                       th:field="*{color}"
+                       class="form-control"
+                       placeholder="Ej: Marrón"
+                       maxlength="100">
+
+            </div>
+
+
+            <!-- RAZA -->
+
+            <div class="form-group">
+
+                <label for="raza">
+                    <i class="bi bi-card-text me-1"></i>
+                    Raza
+                </label>
+
+                <input type="text"
+                       id="raza"
+                       th:field="*{raza}"
+                       class="form-control"
+                       placeholder="Ej: Labrador"
+                       maxlength="100">
+
+            </div>
+
+
+            <!-- CASTRADO -->
+
+            <div class="castrado-container">
+
+                <div class="form-check">
+
+                    <input type="checkbox"
+                           id="castrado"
+                           th:field="*{castrado}"
+                           class="form-check-input">
+
+                    <label for="castrado"
+                           class="form-check-label">
+
+                        <span class="castrado-icon">
+                            <i class="bi bi-check-lg"></i>
+                        </span>
+
+                        <span>
+                            <strong>Castrado</strong>
+                            <small>
+                                Marcar si la mascota está castrada
+                            </small>
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTONES -->
+
+            <div class="form-actions">
+
+                <a th:href="@{/mascotas}"
+                   class="btn btn-cancelar">
+
+                    <i class="bi bi-arrow-left me-2"></i>
+
+                    Cancelar
+
+                </a>
+
+
+                <button type="submit"
+                        class="btn btn-guardar">
+
+                    <i class="bi bi-check-lg me-2"></i>
+
+                    <span th:if="${id == null}">
+                        Guardar mascota
+                    </span>
+
+                    <span th:if="${id != null}">
+                        Guardar cambios
+                    </span>
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous">
+</script>
+
+</body>
+</html>

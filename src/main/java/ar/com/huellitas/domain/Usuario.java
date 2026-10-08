@@ -1,21 +1,33 @@
 package ar.com.huellitas.domain;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import ar.com.huellitas.dtos.UsuarioDTO;
+import ar.com.huellitas.enums.Rol;
+import ar.com.huellitas.forms.RegistracionForm;
 import ar.com.huellitas.helpers.ValidationUtils;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name= "USUARIOS")
-public class Usuario {
+public class Usuario extends Exponible<RegistracionForm, UsuarioDTO>{
 	final static String ERR_NOMBRE_INVALIDO = "Debe ingresar un nombre válido";
 	final static String ERR_MAIL_INVALIDO = "Debe ingresar un mail válido";
 	final static String ERR_APELLIDO_INVALIDO = "Debe ingresar un apellido válido";
@@ -38,14 +50,26 @@ public class Usuario {
 	@OneToMany(mappedBy = "publicadoPor",cascade = CascadeType.ALL, orphanRemoval = true)
 	
 	private List<Publicacion> publicaciones = new ArrayList<>();
-	
+	@Enumerated(EnumType.ORDINAL)
+	@ElementCollection(targetClass = Rol.class)
+	@CollectionTable(name = "ROLES_USUARIOS", joinColumns = @JoinColumn(name= "USUARIO_ID"))
+	@Column(name = "ROL_ID")
+	private List<Rol> roles;
 
 	protected Usuario(){}
 	public Usuario( String nombre, String apellido, String mail, String telefono ) {
+		this(nombre,apellido,mail,telefono,false);
+		
+		
+	}
+	public Usuario( String nombre, String apellido, String mail, String telefono, boolean isAdmin ) {
 		setNombre(nombre);
 		setApellido(apellido);
 		setMail(mail);
 		setTelefono(telefono);
+		this.roles = new ArrayList<Rol>();
+		this.roles.add(Rol.SIMPLE);
+		if(isAdmin) this.roles.add(Rol.ADMIN);
 		
 	}
 	public void setNombre(String nombre) {
@@ -116,6 +140,22 @@ public class Usuario {
 	
 	public Long getId() {
 		return id;
+	}
+	@Override
+	public UsuarioDTO asDTO() {
+		UsuarioDTO dto = new UsuarioDTO();
+		dto.setNombre(getNombre());
+		dto.setApellido(getApellido());
+		dto.setMail(getMail());
+		return dto;
+	}
+	
+	public List<GrantedAuthority> collectAuthorities(){
+		List<GrantedAuthority> credentials = new ArrayList<GrantedAuthority>();
+		for(Rol rol : this.roles) {
+			credentials.add(new SimpleGrantedAuthority(rol.getSecurityName()));
+		}
+		return credentials;
 	}
 
 

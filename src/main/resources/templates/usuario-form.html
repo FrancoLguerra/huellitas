@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
@@ -16,11 +16,12 @@
                 <p>Registrate en Huellitas</p>
             </div>
 
-            <form id="usuarioForm" th:action="@{/registro}" th:object="${form}" method="post">
+            <form id="usuarioForm" th:action="@{/registro}" th:object="${form}" method="post" class="row g-3">
 
-                <div class="grupo">
-                    <label for="nombre">Nombre</label>
+                <div class="input-group mb-3">
+                    <label for="nombre" >Nombre</label>
                     <input
+                    	class="form-control"
                     	th:field="*{nombre}"
                         type="text"
                         id="nombre"
@@ -33,9 +34,10 @@
                     <span class="error" id="nombreError"></span>
                 </div>
 
-                <div class="grupo">
+                <div class="input-group mb-3">
                     <label for="apellido">Apellido</label>
                     <input
+                    	class="form-control"
                     	th:field="*{apellido}"
                         type="text"
                         id="apellido"
@@ -47,24 +49,26 @@
                     >
                     <span class="error" id="apellidoError"></span>
                 </div>
-
-                <div class="grupo">
+				
+                <div class="input-group mb-3">
                     <label for="mail">Correo electrónico</label>
                     <input
+                    	th:class="'form-control glass-input' + ${#fields.hasErrors('mail') ? ' is-invalid' : ''} "
                     	th:field="*{mail}"
-                        type="email"
+                        
                         id="mail"
                         name="mail"
                         placeholder="ejemplo@email.com"
                         autocomplete="email"
-                        required
+                        
                     >
-                    <span class="error" id="mailError"></span>
+                    <div id="mail-error" class="feedback invalid-feedback" th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></div>
                 </div>
 
-                <div class="grupo">
+                <div class="input-group mb-3">
                     <label for="telefono">Teléfono</label>
                     <input
+                    	class="form-control"
                     	th:field="*{telefono}"
                         type="tel"
                         id="telefono"
@@ -89,4 +93,258 @@
     </main>
 
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Crear Usuario | Huellitas</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Navbar -->
+    <link rel="stylesheet"
+          th:href="@{/css/navbar.css}">
+
+    <!-- CSS de esta vista -->
+    <link rel="stylesheet"
+          th:href="@{/css/usuario-form.css}">
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     NAVBAR
+========================================== -->
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+
+<!-- ==========================================
+     CONTENIDO
+========================================== -->
+
+<main class="contenedor">
+
+
+    <section class="tarjeta">
+
+
+        <!-- ENCABEZADO -->
+
+        <div class="encabezado">
+
+            <div class="huella">
+                <i class="bi bi-person-plus-fill"></i>
+            </div>
+
+            <div>
+
+                <h1>Crear usuario</h1>
+
+                <p>
+                    Registrá una nueva cuenta en Huellitas
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMULARIO -->
+
+        <form id="usuarioForm"
+              th:action="@{/registro}"
+              th:object="${form}"
+              method="post"
+              class="row g-3">
+
+
+            <!-- NOMBRE -->
+
+            <div class="col-md-6 campo">
+
+                <label for="nombre">
+                    Nombre
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="bi bi-person"></i>
+
+                    <input
+                        class="form-control"
+                        th:field="*{nombre}"
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Ingresá tu nombre"
+                        maxlength="100"
+                        autocomplete="given-name"
+                        required>
+
+                </div>
+
+                <span class="error"
+                      id="nombreError">
+                </span>
+
+            </div>
+
+
+            <!-- APELLIDO -->
+
+            <div class="col-md-6 campo">
+
+                <label for="apellido">
+                    Apellido
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="bi bi-person"></i>
+
+                    <input
+                        class="form-control"
+                        th:field="*{apellido}"
+                        type="text"
+                        id="apellido"
+                        name="apellido"
+                        placeholder="Ingresá tu apellido"
+                        maxlength="100"
+                        autocomplete="family-name"
+                        required>
+
+                </div>
+
+                <span class="error"
+                      id="apellidoError">
+                </span>
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="col-12 campo">
+
+                <label for="mail">
+                    Correo electrónico
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="bi bi-envelope"></i>
+
+                    <input
+                        th:class="'form-control glass-input' + ${#fields.hasErrors('mail') ? ' is-invalid' : ''}"
+                        th:field="*{mail}"
+                        id="mail"
+                        name="mail"
+                        type="email"
+                        placeholder="ejemplo@email.com"
+                        autocomplete="email">
+
+                </div>
+
+                <div id="mail-error"
+                     class="feedback invalid-feedback"
+                     th:if="${#fields.hasErrors('mail')}"
+                     th:errors="*{mail}">
+                </div>
+
+            </div>
+
+
+            <!-- TELEFONO -->
+
+            <div class="col-12 campo">
+
+                <label for="telefono">
+                    Teléfono
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="bi bi-telephone"></i>
+
+                    <input
+                        class="form-control"
+                        th:field="*{telefono}"
+                        type="tel"
+                        id="telefono"
+                        name="telefono"
+                        placeholder="Ej: 2284123456"
+                        autocomplete="tel"
+                        required>
+
+                </div>
+
+                <span class="error"
+                      id="telefonoError">
+                </span>
+
+            </div>
+
+
+            <!-- BOTÓN -->
+
+            <div class="col-12 acciones">
+
+                <button type="submit"
+                        id="btnCrear"
+                        class="btn btn-huellitas">
+
+                    <i class="bi bi-person-plus me-2"></i>
+
+                    Crear usuario
+
+                </button>
+
+            </div>
+
+
+            <!-- MENSAJE -->
+
+            <div id="mensaje"
+                 class="mensaje">
+            </div>
+
+
+        </form>
+
+
+    </section>
+
+
+</main>
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous">
+</script>
+
+
+</body>
+
 </html>

@@ -1,0 +1,295 @@
+/* ==============================
+   GENERAL
+============================== */
+
+body {
+    background-color: #f7fafb;
+    color: #162c49;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ==============================
+   NAVBAR
+============================== */
+
+#navbar {
+    min-height: 82px;
+    background: rgba(255, 255, 255, 0.96) !important;
+    border-bottom: 1px solid #e6eeee;
+    box-shadow: 0 2px 12px rgba(22, 44, 73, 0.05);
+}
+
+#navbar .container-fluid {
+    max-width: 1500px;
+    padding: 0 30px;
+}
+
+
+/* ==============================
+   LOGO
+============================== */
+
+#navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: #142d4d;
+    font-size: 24px;
+    font-weight: 700;
+
+    margin-right: 45px;
+}
+
+.logo-huellita {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #e1f5f1;
+    color: #087f70;
+
+    font-size: 27px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-text small {
+    margin-top: 5px;
+
+    color: #71839b;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+/* ==============================
+   LINKS
+============================== */
+
+#navbar .nav-link {
+    color: #526b86;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    padding: 11px 16px !important;
+
+    border-radius: 10px;
+
+    transition: all 0.2s ease;
+}
+
+#navbar .nav-link:hover {
+    background-color: #eef8f6;
+    color: #087f70;
+}
+
+#navbar .nav-link.active {
+    background-color: #e0f3ef;
+    color: #087f70;
+    font-weight: 600;
+}
+
+
+/* ==============================
+   DROPDOWN
+============================== */
+
+#navbar .dropdown-menu {
+    border: 1px solid #e6eeee;
+    border-radius: 12px;
+
+    padding: 8px;
+
+    box-shadow: 0 10px 30px rgba(22, 44, 73, 0.10);
+}
+
+#navbar .dropdown-item {
+    border-radius: 8px;
+    padding: 9px 12px;
+
+    color: #526b86;
+}
+
+#navbar .dropdown-item:hover {
+    background-color: #eaf7f4;
+    color: #087f70;
+}
+
+
+/* ==============================
+   SEARCH
+============================== */
+
+#navbar form {
+    margin-right: 20px;
+}
+
+#navbar form .form-control {
+    width: 210px;
+
+    border: 1px solid #dce6ea;
+    border-radius: 10px;
+
+    padding: 9px 14px;
+
+    background-color: #ffffff;
+}
+
+#navbar form .form-control:focus {
+    border-color: #75c9bc;
+
+    box-shadow: 0 0 0 0.2rem rgba(8, 127, 112, 0.10);
+}
+
+#navbar form .btn {
+    border-color: #087f70;
+    color: #087f70;
+
+    border-radius: 10px;
+
+    padding: 9px 18px;
+}
+
+#navbar form .btn:hover {
+    background-color: #087f70;
+    border-color: #087f70;
+    color: white;
+}
+
+
+/* ==============================
+   PERFIL
+============================== */
+
+.perfil-link {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+}
+
+.perfil-avatar {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #284766;
+    color: white;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* ==============================
+   CONTENIDO
+============================== */
+
+.contenido {
+    max-width: 1500px;
+    margin: 0 auto;
+
+    padding: 40px 30px;
+}
+
+.saludo {
+    margin-bottom: 30px;
+}
+
+.saludo h1 {
+    margin: 0;
+
+    color: #162c49;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.saludo p {
+    margin-top: 7px;
+
+    color: #6c8098;
+    font-size: 16px;
+}
+
+.saludo-patita {
+    color: #087f70;
+}
+
+
+/* ==============================
+   TARJETAS
+============================== */
+
+.huellitas-card {
+    background: white;
+
+    border: 1px solid #e8eeee;
+    border-radius: 16px;
+
+    padding: 24px;
+
+    box-shadow: 0 4px 16px rgba(22, 44, 73, 0.05);
+}
+
+.huellitas-card h3 {
+    color: #162c49;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+/* ==============================
+   BOTONES HUELLITAS
+============================== */
+
+.btn-huellitas {
+    background-color: #087f70 !important;
+    border-color: #087f70 !important;
+}
+
+.btn-huellitas:hover {
+    background-color: #066b60 !important;
+    border-color: #066b60 !important;
+}
+
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 991px) {
+
+    #navbar .navbar-brand {
+        margin-right: 0;
+    }
+
+    #navbar form {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #navbar form .form-control {
+        width: 100%;
+    }
+
+    #navbar .nav-link {
+        margin-top: 4px;
+    }
+}
+
